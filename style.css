@@ -48,6 +48,7 @@ body { background: var(--bg); color: var(--text); padding-bottom: 120px; font-si
     align-items: center; 
     justify-content: center;
     background: var(--bg);
+    overflow: hidden;
 }
 
 .login-bg-img { 
@@ -58,8 +59,10 @@ body { background: var(--bg); color: var(--text); padding-bottom: 120px; font-si
     width: 100%; 
     height: 100%; 
     object-fit: cover; /* هذا يضمن عدم وجود فراغات في اللابتوب والموبايل */
+    object-position: center; /* لضمان تمركز الكتاب في المنتصف دائماً */
     pointer-events: none; 
     z-index: 0; 
+    opacity: 1;
 }
 
 .login-card { position: relative; z-index: 1; background: var(--card); padding: 35px; border-radius: 50px; text-align: center; width: 90%; max-width: 400px; border: 4px solid var(--primary); animation: wobble 3s infinite; }
