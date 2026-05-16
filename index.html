@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <!-- بيعرفك لغة البرنامج و ان الكتابه تكون من اليمين للشمال -->
+    <head>
+    <meta charset="UTF-8">
+    <!-- يضمن ان الحروف تظهر بشكل صحيح -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- شكل مناسب مع الفون واللاب  -->
+    <title>🌸منصة  🌸</title>
+    <!-- العنوان اللي بيظهر ف راس الصفحه -->
+    <link rel="stylesheet" href="style.css">
+    <!-- يربط ملف استايل -->
+</head>
+<body>
+    <div id="stars" class="stars-container"></div>
+    <!--  دا اي دي ب اسم ستار بنعمله استدعاء ف الجافا عشان يحط نجوم ف الخلفيه و الكونتينر عشان تبقى النجوم بطول الشاشه   --> 
+    <div id="login-overlay">
+        <!-- الصفحه الاولى بتاعت تسجيل الدخول بنديها اي دي عشان نعرف نخفيها لما نسجل -->
+        <img src="https://ouwnhwqjtdrhtnajkmoo.supabase.co/storage/v1/object/sign/soar/Gemini_Generated_Image_bjpqz5bjpqz5bjpq%20(1).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85OWVkMWIyZS1jNTkxLTRkYmEtYmM3MS04OTQ2ZGZjYzQwYTEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2FyL0dlbWluaV9HZW5lcmF0ZWRfSW1hZ2VfYmpwcXo1YmpwcXo1YmpwcSAoMSkucG5nIiwiaWF0IjoxNzc4OTUzNTk1LCJleHAiOjQ5MzI1NTM1OTV9.EXyeB0zSF_UbA4Sif6cxNYseHRTveMmtbBO3YVFNBJk" class="login-bg-img">
+        <div class="login-card">
+            <!-- الكارت بتاع تسجيل الدخول بندية اي دي عشان نخليه ب استايل معين  -->
+            <h2 class="welcome-title">🎀 يا هلا 🎀</h2>
+            <!-- جملة ترحيبيه بتظر في الكارت  -->
+            <input type="text" id="name" placeholder="الاسم الثلاثي">
+            <!-- خانة كتابة الاسم ب اي دي نص ونص شبح  -->
+            <input type="tel" id="phone" placeholder="رقم الموبايل المصري" maxlength="11">
+            <!-- خانة كتابة رقم الموبايل ب اي دي رقم ونص شبح  -->
+            <button onclick="enter()" class="magic-enter-btn">تسجيل الدخول✨</button>
+            <!-- زر تسجيل الدخول مع امر تغيير الصفحه ف الجافا لما ندوس وكلاس عشان يكون استايل معين  -->
+        </div>
+    </div>
+
+    <a href="https://wa.me/201551455490" id="whatsapp-btn" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <!-- زر واتس ب اي دي عشان يكون ثابت و كلاس عشان انيميشن يفتح ف صفحه جديدة شكله صوره لو مظهرتش يبقى لينك -->
+    <div class="nav-scroll">
+        <!-- كلاس بيلم كل الفصول وبيرتبهم بالعرض -->
+        <button class="ch-btn active" onclick="changeCh(1, this)">فصل 1 🌸</button>
+        <!-- زر الفصل الاول و الاكتف عشان اول ما المنصه تفاح تكون عليه  -->
+        <button class="ch-btn" onclick="changeCh(2, this)">فصل 2 ✨</button>
+        <!-- زر الفصل الثاني لما ندوس عليه بيتحول عليه الاكتف -->
+        <button class="ch-btn" onclick="changeCh(3, this)">فصل 3 🎀</button>
+        <!-- زر الفصل الثالث لما ندوس عليه بيتحول عليه الاكتف -->
+        <button class="ch-btn" onclick="changeCh(4, this)">فصل 4 🍭</button>
+        <!-- زر الفصل الرابع لما ندوس عليه بيتحول عليه الاكتف -->
+        <button class="ch-btn" onclick="changeCh(5, this)">فصل 5 🦋</button>
+        <!-- زر الفصل الخامس لما ندوس عليه بيتحول عليه الاكتف -->
+        <button class="ch-btn" onclick="changeCh(6, this)">فصل 6 🌈</button>
+        <!-- زر الفصل السادس لما ندوس عليه بيتحول عليه الاكتف -->
+        <button class="ch-btn" onclick="changeCh(7, this)">فصل 7 ❄️</button>
+        <!-- زر الفصل السابع لما ندوس عليه بيتحول عليه الاكتف -->
+        <button class="ch-btn" onclick="changeCh(8, this)">فصل 8 🎓</button>
+        <!-- زر الفصل الثامن -->
+        <button class="ch-btn" onclick="changeCh(9, this)">فصل 9 🎈</button>
+        <!-- زر الفصل التاسع -->
+        <button class="ch-btn" onclick="changeCh(10, this)">فصل 10 🌟</button>
+        <!-- زر الفصل العاشر -->
+        <button class="ch-btn" onclick="showFinalTest(this)">اختبار نهائي 💢💯⁉</button>
+    </div>
+
+    <div class="main-tabs">
+        <!-- كلاس بيلم محتويات الفصل  -->
+        <button class="main-btn" onclick="show('study')">📖 الشرح</button>
+        <!-- زر شرح واخد كلاس عشان التنسيق و الالوان ولما ندوس الجافا تلعب-->
+        <button class="main-btn" onclick="show('practical')" style="background:var(--primary)">🧪 العملي</button>
+        <!-- زر عملي واخد كلاس عشان التنيسق والالوان ولما ندوس الجافا تلعب وباك جراوند ل لون مميز-->
+        <button class="main-btn" onclick="show('quiz')"style="background:var(--check-btn-bg)">📝 الاختبار </button>
+        <!-- زر اختبار واخد كلاس عشان التنسيق والالوان ولما ندوس الجافا تلعب وباك جراوند ل لون مميز  -->
+    </div>
+    <div id="study-sec" class="content-sec" style="padding: 30px;">
+        <!-- كونتينر الشرح واخد اي دي عشان الجافا وكلاس عشان الاستايل والتنسيق ومسافه من حواف الشاشه -->
+        <h3 id="ch-title" style="text-align: center;"></h3>
+        <!-- دا اي دي بحجم خط معين عشان يغير النص تلقائي مع تغيير الفصول وستايل يخليه ف نص الشاشه بالظبط  -->
+        <div id="ch-content-area"></div>
+        <!-- كونتينر محتوى الشرح اللي بيتملي ف الجافا  -->
+    </div>
+    <div id="practical-sec" class="content-sec" style="display:none; padding: 15px;">
+        <!--  -->
+        <h3 style="text-align: center;">🎬 ركن التطبيق العملي</h3>
+        <div id="practical-content-area"></div>
+    </div>
+
+    <div id="quiz-sec" class="content-sec" style="display:none; padding: 15px;">
+        <div id="top-score" class="score-display"></div>
+        <div id="gift-box" onclick="openGift()">🎁</div>
+        <form id="quiz-form"> 
+            <div id="quiz-questions-area"></div>
+        </form>
+        <button onclick="checkAnswers()" class="check-btn">تصحيح الاختبار ✅</button>
+        <div id="bottom-score" class="score-display" style="margin-bottom: 50px;"></div>
+    </div>
+
+    <div class="footer">
+        <div class="bubble">
+            <span class="rotate-full" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="للأعلى">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/>
+                </svg>
+            </span>
+            <span id="footer-text" style="flex:1; text-align:center; font-weight:800;">تألقي دوماً! ✨</span>
+            <span id="theme-icon" class="rotate-full" onclick="toggleTheme()" title="تغيير المظهر">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0 c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2 c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1 S11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0 s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06 c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41 c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36 c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/>
+                </svg>
+            </span>
+        </div>
+    </div>
+
+    <!-- إضافة مكتبة سوبابيز قبل ملفك الأساسي -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
