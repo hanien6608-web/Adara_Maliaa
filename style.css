@@ -67,13 +67,31 @@ body { background: var(--bg); color: var(--text); padding-bottom: 120px; font-si
     }
 }
 
-.login-card { position: relative; z-index: 1; background: var(--card); padding: 35px; border-radius: 50px; text-align: center; width: 90%; max-width: 400px; border: 4px solid var(--primary); animation: wobble 3s infinite; }
+.login-form-container { 
+    position: relative; 
+    z-index: 1; 
+    background: rgba(255, 240, 246, 0.15); /* شفافية عالية جداً لمظهر زجاجي نقي */
+    backdrop-filter: blur(15px); /* تعزيز تأثير الزجاج الضبابي */
+    padding: 20px; /* تصغير المساحة الداخلية لتناسب الحجم الجديد */
+    border-radius: 60px; /* شكل بيضاوي أنيق ومتناسق مع الحجم الصغير */
+    text-align: center; 
+    width: 85%; 
+    max-width: 260px; /* تصغير العرض الإجمالي ليكون أرشق */
+    margin-top: -60px; /* رفعه للأعلى سيكا */
+    border: 1.5px solid rgba(167, 139, 250, 0.4); /* حدود رقيقة جداً */
+    animation: wobble 3s infinite; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* ظل خفيف لإبراز الكارت */
+}
+
+.dark-mode .login-form-container { 
+    background: rgba(45, 27, 78, 0.25); /* شفافية أكبر للوضع الليلي */
+}
 @keyframes wobble { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg) scale(1.02); } }
-.welcome-title { display: inline-block; animation: welcomeDance 2s infinite ease-in-out; font-weight: 800; font-size: 22px; color: var(--text); }
+.welcome-title { display: inline-block; animation: welcomeDance 2s infinite ease-in-out; font-weight: 800; font-size: 18px; color: var(--text); }
 @keyframes welcomeDance { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); color: var(--secondary); text-shadow: 0 0 10px var(--secondary); } }
 
-input[type="text"], input[type="tel"] { width: 100%; padding: 14px; border-radius: 20px; border: 2px solid var(--primary); background: var(--input-bg); color: var(--text); text-align: center; font-weight: 800; outline: none; margin-top: 10px; }
-.magic-enter-btn { width: 100%; padding: 16px; border-radius: 20px; border: none; color: white; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 25px; background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); background-size: 400% 400%; animation: gradientMove 5s ease infinite; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+input[type="text"], input[type="tel"] { width: 100%; padding: 10px; border-radius: 15px; border: 1.5px solid var(--primary); background: var(--input-bg); color: var(--text); text-align: center; font-weight: 800; outline: none; margin-top: 8px; font-size: 14px; }
+.magic-enter-btn { width: 100%; padding: 12px; border-radius: 15px; border: none; color: white; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 18px; background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); background-size: 400% 400%; animation: gradientMove 5s ease infinite; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
 .nav-scroll { display: flex; overflow-x: auto; gap: 10px; padding: 15px; background: var(--card); border-bottom: 3px solid var(--primary); scrollbar-width: none; }
