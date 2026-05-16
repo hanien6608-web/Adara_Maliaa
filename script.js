@@ -120,8 +120,12 @@ function createStars() {
 function enter() {
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const studentId = document.getElementById('student-id').value.trim();
+
     if (name.split(/\s+/).length < 3) return alert("من فضلك اكتبي اسمك الثلاثي! 🌸");
     if (!/^(010|011|012|015)[0-9]{8}$/.test(phone)) return alert("من فضلك رقم موبايل مصري صحيح! ✨");
+    if (!/^\d{5}$/.test(studentId)) return alert("من فضلك اكتبي كود الطالب المكون من 5 أرقام! 🔑");
+
     const ov = document.getElementById('login-overlay');
     ov.style.transform = 'scale(0) rotate(720deg)';
     ov.style.opacity = '0';

@@ -70,21 +70,21 @@ body { background: var(--bg); color: var(--text); padding-bottom: 120px; font-si
 .login-form-container { 
     position: relative; 
     z-index: 1; 
-    background: rgba(255, 240, 246, 0.01); /* شفافية "مليون" لمظهر زجاجي نقي جداً */
-    backdrop-filter: blur(15px); /* تعزيز تأثير الزجاج الضبابي */
+    background: none; /* حذف لون الكارت */
+    backdrop-filter: none; /* حذف التأثير الضبابي */
     padding: 20px; /* تكبير المساحة الداخلية لراحة العين */
-    border-radius: 100px; /* حواف دايرة أكتر وشكل بيضاوي مثالي */
+    border-radius: 0; 
     text-align: center; 
     width: 85%; 
     max-width: 280px; /* تكبير العرض الإجمالي سيكا */
     margin-top: -140px; /* رفعه للأعلى بشكل أكبر */
-    border: 1.5px solid rgba(167, 139, 250, 0.4); /* حدود رقيقة جداً */
+    border: none; /* حذف حدود الكارت */
     animation: wobble 3s infinite; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* ظل خفيف لإبراز الكارت */
+    box-shadow: none; /* حذف ظل الكارت */
 }
 
 .dark-mode .login-form-container { 
-    background: rgba(45, 27, 78, 0.02); /* شفافية قصوى في الوضع الليلي */
+    background: none; 
 }
 @keyframes wobble { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg) scale(1.02); } }
 .welcome-title { display: inline-block; animation: welcomeDance 2s infinite ease-in-out; font-weight: 800; font-size: 16px; color: var(--text); }
