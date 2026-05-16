@@ -47,22 +47,24 @@ body { background: var(--bg); color: var(--text); padding-bottom: 120px; font-si
     flex-direction: column; 
     align-items: center; 
     justify-content: center;
-    background: var(--bg);
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.login-bg-img { 
-    display: block !important;
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; /* هذا يضمن عدم وجود فراغات في اللابتوب والموبايل */
-    object-position: center; /* لضمان تمركز الكتاب في المنتصف دائماً */
-    pointer-events: none; 
-    z-index: 0; 
-    opacity: 1;
+/* للاب توب والكمبيوتر (الشاشات العريضة) */
+@media (min-width: 769px) {
+    #login-overlay {
+        background-image: url('https://ouwnhwqjtdrhtnajkmoo.supabase.co/storage/v1/object/sign/soar/Gemini_Generated_Image_%20(1).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85OWVkMWIyZS1jNTkxLTRkYmEtYmM3MS04OTQ2ZGZjYzQwYTEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2FyL0dlbWluaV9HZW5lcmF0ZWRfSW1hZ2VfICgxKS5wbmciLCJpYXQiOjE3Nzg5NTc4NTEsImV4cCI6NDkzMjU1Nzg1MX0.eGw1lZm-tSgLPeynRGAnLVxQTDhYpWalh6vpjBSewBw');
+    }
+}
+
+/* للموبايل (الشاشات الطولية) */
+@media (max-width: 768px) {
+    #login-overlay {
+        background-image: url('https://ouwnhwqjtdrhtnajkmoo.supabase.co/storage/v1/object/sign/soar/Gemini_Generated_Image_%20(2).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85OWVkMWIyZS1jNTkxLTRkYmEtYmM3MS04OTQ2ZGZjYzQwYTEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2FyL0dlbWluaV9HZW5lcmF0ZWRfSW1hZ2VfICgyKS5wbmciLCJpYXQiOjE3Nzg5NTgwMjUsImV4cCI6NDkzMjU1ODAyNX0.EAh6iH6hR6cz4IGSxTOGoqk4BGwPPniTFu7pUK99-Mw');
+    }
 }
 
 .login-card { position: relative; z-index: 1; background: var(--card); padding: 35px; border-radius: 50px; text-align: center; width: 90%; max-width: 400px; border: 4px solid var(--primary); animation: wobble 3s infinite; }
@@ -121,13 +123,13 @@ input[type="text"], input[type="tel"] { width: 100%; padding: 14px; border-radiu
     color: var(--primary); 
     margin-top: 10px;
     background: rgba(255, 255, 255, 0.95); 
-    padding: 10px 25px; 
+    padding: 6px 18px; /* تقليص حجم المربع ليكون أرشق */
     border-radius: 20px; 
     box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
     border: 1px solid var(--primary); 
     text-align: center; 
     cursor: pointer;
-    max-width: 90%;
+    width: auto;
     line-height: 1.4;
 }
 @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }

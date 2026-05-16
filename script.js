@@ -26,7 +26,7 @@ const iconsSVG = {
     paper: `<svg width="1em" height="1em" viewBox="0 0 24 24"><path fill="#f8fafc" d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/><path fill="#00d2d3" d="M14 2v6h6L14 2z"/><rect x="7" y="12" width="10" height="1.5" rx="0.5" fill="#00d2d3" opacity="0.3"/><rect x="7" y="15" width="10" height="1.5" rx="0.5" fill="#00d2d3" opacity="0.3"/></svg>`,
     notebook: `<svg width="1em" height="1em" viewBox="0 0 24 24"><path fill="#fa2f9f" d="M18 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/><path fill="rgba(0,0,0,0.15)" d="M5 4v16c0 1.1.9 2 2 2h1V2H7c-1.1 0-2 .9-2 2z"/><rect x="9" y="5" width="7" height="1.5" rx="0.5" fill="white" opacity="0.4"/><rect x="9" y="8" width="7" height="1.5" rx="0.5" fill="white" opacity="0.4"/></svg>`,
     idea: `<svg width="1em" height="1em" viewBox="0 0 24 24"><path fill="#ffc107" d="M12 2C8.14 2 5 5.14 5 9c0 2.38 1.2 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.8-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/><path fill="#333" d="M9 19h6v1H9zM10 21h4v1h-4z"/></svg>`,
-    slipper: `<svg width="1.1em" height="1.1em" viewBox="0 0 24 24"><path fill="#4E342E" d="M12,2C8.6,2,6,4.7,6,8v10c0,2.2,1.8,4,4,4h4c2.2,0,4-1.8,4-4V8C18,4.7,15.4,2,12,2z"/><path fill="#FF1744" d="M12,3l-5,7h3l2-4l2,4h3L12,3z"/><circle cx="12" cy="3.5" r="0.8" fill="#FFD600"/></svg>`,
+    slipper: `<svg width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#3E2723" d="M16 18c0 2.2-1.8 4-4 4H10c-2.2 0-4-1.8-4-4V8c0-3.3 2.7-6 6-6s6 2.7 6 6v10z"/><path fill="#D32F2F" d="M11 3.5L7 12h2l2-5 2 5h2L11 3.5z"/><circle cx="11" cy="4" r="1" fill="#FFD700"/></svg>`,
     failedText: `<svg width="2.5em" height="1.1em" viewBox="0 0 120 40"><rect x="5" y="5" width="110" height="30" rx="15" fill="#D32F2F"/><text x="60" y="27" text-anchor="middle" font-family="Cairo" font-weight="900" font-size="18" fill="white">ساقط !</text></svg>`,
     zeroText: `<svg width="3.2em" height="1.2em" viewBox="0 0 140 50"><circle cx="25" cy="25" r="20" fill="#D32F2F"/><path d="M18 18l14 14M32 18l-14 14" stroke="white" stroke-width="4" stroke-linecap="round"/><text x="85" y="36" text-anchor="middle" font-family="Cairo" font-weight="900" font-size="30" fill="#D32F2F">صفر</text></svg>`
 };
@@ -421,11 +421,11 @@ function createCelebration(type) {
         
         // تحديد الحجم: كبير جداً للهدايا، متوسط للشنط، وصغير للظرف (الرسوب)
         if (type === 'full') {
-            c.style.fontSize = (Math.random() * 30 + 55) + 'px'; // حجم ضخم (55-85 بكسل)
+            c.style.fontSize = (Math.random() * 30 + 60) + 'px'; // 60-90 بكسل للتفوق
         } else if (type === 'half') {
-            c.style.fontSize = (Math.random() * 15 + 35) + 'px'; // حجم متوسط (35-50 بكسل)
+            c.style.fontSize = (Math.random() * 15 + 30) + 'px'; // 30-45 بكسل للجيد
         } else {
-            c.style.fontSize = (Math.random() * 15 + 35) + 'px'; // حجم صغير ورقيق (25-35 بكسل)
+            c.style.fontSize = (Math.random() * 10 + 15) + 'px'; // 15-25 بكسل للرسوب (رقيق جداً)
         }
 
         c.style.setProperty('--drift', (Math.random() * 200 - 100) + 'px');
