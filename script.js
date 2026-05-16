@@ -124,7 +124,7 @@ function enter() {
 
     if (name.split(/\s+/).length < 3) return alert("من فضلك اكتبي اسمك الثلاثي! 🌸");
     if (!/^(010|011|012|015)[0-9]{8}$/.test(phone)) return alert("من فضلك رقم موبايل مصري صحيح! ✨");
-    if (!/^\d{5}$/.test(studentId)) return alert("من فضلك اكتبي كود الطالب المكون من 5 أرقام! 🔑");
+    if (!/^[12]\d{4}$/.test(studentId)) return alert("كود الطالب يجب أن يبدأ بـ 1 أو 2 ومكون من 5 أرقام! 🔑");
 
     const ov = document.getElementById('login-overlay');
     ov.style.transform = 'scale(0) rotate(720deg)';

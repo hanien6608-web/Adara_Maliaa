@@ -90,7 +90,9 @@ body { background: var(--bg); color: var(--text); padding-bottom: 120px; font-si
 .welcome-title { display: inline-block; animation: welcomeDance 2s infinite ease-in-out; font-weight: 800; font-size: 16px; color: var(--text); }
 @keyframes welcomeDance { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); color: var(--secondary); text-shadow: 0 0 10px var(--secondary); } }
 
-input[type="text"], input[type="tel"] { width: 100%; padding: 7px; border-radius: 12px; border: 1.2px solid var(--primary); background: var(--input-bg); color: var(--text); text-align: center; font-weight: 800; outline: none; margin-top: 5px; font-size: 12px; }
+input[type="text"], input[type="tel"] { width: 100%; padding: 8px; border-radius: 12px; border: 1.5px solid rgba(167, 139, 250, 0.5); background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); color: var(--text); text-align: center; font-weight: 800; outline: none; margin-top: 8px; font-size: 13px; transition: 0.3s; }
+input[type="text"]::placeholder, input[type="tel"]::placeholder { color: rgba(76, 29, 149, 0.6); }
+input[type="text"]:focus, input[type="tel"]:focus { border-color: var(--secondary); background: rgba(255, 255, 255, 0.2); }
 .magic-enter-btn { width: 70%; padding: 6px; border-radius: 10px; border: none; color: white; font-weight: bold; font-size: 11px; cursor: pointer; margin: 15px auto 0; background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); background-size: 400% 400%; animation: gradientMove 5s ease infinite; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: block; }
 @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
