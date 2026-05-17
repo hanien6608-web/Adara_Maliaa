@@ -8,6 +8,7 @@ let currentQuizData = []; // متغير لتخزين أسئلة الفصل ال�
 
 let currentCelebrationInterval = null; // لتخزين مؤقت setInterval للاحتفال
 let currentCelebrationTimeout = null; // لتخزين مؤقت setTimeout لإيقاف الاحتفال
+let currentResultAudio = null; // متغير لتخزين الصوت الحالي ومنع التداخل (الصدا)
 
 // أيقونات SVG هندسية للنتائج
 const iconsSVG = {
@@ -118,15 +119,9 @@ function createStars() {
 
 //  3. دالة الدخول
 function enter() {
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const studentId = document.getElementById('student-id').value.trim();
-
-    if (name.split(/\s+/).length < 3) return alert("من فضلك اكتبي اسمك الثلاثي! 🌸");
-    if (!/^(010|011|012|015)[0-9]{8}$/.test(phone)) return alert("من فضلك رقم موبايل مصري صحيح! ✨");
-    if (!/^[12]\d{4}$/.test(studentId)) return alert("كود الطالب يجب أن يبدأ بـ 1 أو 2 ومكون من 5 أرقام! 🔑");
-
     const ov = document.getElementById('login-overlay');
+    if (ov.style.display === 'none') return; // منع تكرار الضغط
+
     ov.style.transform = 'scale(0) rotate(720deg)';
     ov.style.opacity = '0';
     document.getElementById('whatsapp-btn').style.display = 'block';
@@ -141,6 +136,9 @@ async function changeCh(num, btn) {
     document.querySelectorAll('.ch-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('ch-title').innerText = "محتوى الفصل " + num;
+
+    // إظهار أزرار الشرح والعملي والاختبار عند العودة للفصول العادية
+    document.querySelector('.main-tabs').style.display = 'grid';
 
     if (!_supabase) {
         // إعادة محاولة التهيئة إذا فشلت في البداية
@@ -187,16 +185,21 @@ async function changeCh(num, btn) {
     // ملاحظة: تم تغيير 's.points' إلى 's.content' في هيكل الـ JSON الجديد للشرح
 
     // تحديث العملي
-    document.getElementById('practical-content-area').innerHTML = (data.practical || []).map((p, i) => `
-        <div class="practical-item">
-            <img src="${p.img}" class="prac-img">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <b>${p.title}</b>
-                <button class="audio-btn" onclick="playAudio('aud${num}_${i}')">🎙️</button>
+    const practicalArea = document.getElementById('practical-content-area');
+    if (!data.practical || data.practical.length === 0) {
+        practicalArea.innerHTML = '<p style="text-align:center; padding:30px; font-weight:800; color:var(--text); opacity:0.8;">الفصل ده مفيهوش عملي يا ملكة! 🌸</p>';
+    } else {
+        practicalArea.innerHTML = data.practical.map((p, i) => `
+            <div class="practical-item">
+                <img src="${p.img}" class="prac-img">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <b>${p.title}</b>
+                    <button class="audio-btn" onclick="playAudio('aud${num}_${i}')">🎙️</button>
+                </div>
+                <audio id="aud${num}_${i}" src="${p.audio}"></audio>
             </div>
-            <audio id="aud${num}_${i}" src="${p.audio}"></audio>
-        </div>
-    `).join('');
+        `).join('');
+    }
 
     // تحديث الاختبار
     renderQuiz(data.quiz || []); // تمرير بيانات الاختبار إلى دالة العرض
@@ -222,6 +225,9 @@ async function showFinalTest(btn) {
 
     // Hide other sections and show quiz section
     show('quiz');
+
+    // إخفاء أزرار الشرح والعملي والاختبار في الاختبار النهائي
+    document.querySelector('.main-tabs').style.display = 'none';
 
     // Populate quiz questions
     renderQuiz(data.quiz);
@@ -371,18 +377,24 @@ function openGift() {
         audioSrc = 'https://ouwnhwqjtdrhtnajkmoo.supabase.co/storage/v1/object/sign/soar/1000782723.mp3?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85OWVkMWIyZS1jNTkxLTRkYmEtYmM3MS04OTQ2ZGZjYzQwYTEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2FyLzEwMDA3ODI3MjMubXAzIiwiaWF0IjoxNzc4OTUzMDA3LCJleHAiOjQ5MzI1NTMwMDd9.juZSn7Kwdoh4d19AML8v8kWJltIqdEEv6_Ugc-Kik_M';
     }
     
-    const audio = new Audio(audioSrc);
-    audio.play().catch(e => console.log("Audio play deferred"));
+    // إيقاف أي صوت شغال حالياً قبل البدء في الجديد لمنع حدوث صدى عند الضغط المتكرر
+    if (currentResultAudio) {
+        currentResultAudio.pause();
+        currentResultAudio.currentTime = 0;
+    }
+
+    currentResultAudio = new Audio(audioSrc);
+    currentResultAudio.play().catch(e => console.log("Audio play deferred"));
     
     const score = parseInt(document.getElementById('gift-box').getAttribute('data-score'));
 
     let m = "";
     if (status === "excellent") {
-        m = "هدية رائعة! نتيجتك ممتازة وتستحقين المكافأة!";
+        m = "برافووووووو";
     } else if (status === "good") {
-        m = "شنطة هدايا! أداء جميل جداً، استمري في التقدم!";
+        m = "ناقصك حته";
     } else {
-        m = (score === 0) ? "للأسف نتيجتك (صفر).. إنتي ساقطة في الاختبار ده! ❌" : "للأسف نتيجتك ضعيفة.. إنتي (ساقطة) المرة دي، محتاجة مذاكرة بجد! ✍️";
+        m = "ساقط !";
     }
 
     // تحديث النص في الصفحة بدلاً من الـ Alert المزعج
@@ -429,7 +441,7 @@ function createCelebration(type) {
         } else if (type === 'half') {
             c.style.fontSize = (Math.random() * 15 + 30) + 'px'; // 30-45 بكسل للجيد
         } else {
-            c.style.fontSize = (Math.random() * 10 + 15) + 'px'; // 15-25 بكسل للرسوب (رقيق جداً)
+            c.style.fontSize = (Math.random() * 10 + 15) + 'px'; // 30-45 بكسل للرسوب (رقيق جداً)
         }
 
         c.style.setProperty('--drift', (Math.random() * 200 - 100) + 'px');
